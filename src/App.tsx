@@ -39,7 +39,11 @@ function App() {
               color: 'var(--accent-primary)',
               borderRadius: '4px',
               textTransform: 'uppercase',
-              letterSpacing: '1px'
+              letterSpacing: '1px',
+              cursor: 'pointer',
+              textDecoration: 'none',
+              zIndex: 101,
+              position: 'relative'
             }}
           >
             Open Transmission (PDF)
