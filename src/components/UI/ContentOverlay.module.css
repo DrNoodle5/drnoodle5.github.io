@@ -1,12 +1,12 @@
 .overlay {
     position: fixed;
     /* Fixed relative to viewport (body) */
-    top: 50%;
-    right: 5%;
-    transform: translateY(-50%);
-    width: 400px;
+    top: 20px;
+    right: 20px;
+    transform: none;
+    width: 450px;
     max-width: 90vw;
-    max-height: 80vh;
+    max-height: calc(100vh - 40px);
     z-index: 10000;
     /* Extremely high z-index to stay on top of everything */
 
