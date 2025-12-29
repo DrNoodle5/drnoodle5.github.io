@@ -47,9 +47,17 @@ export const IntroContent: React.FC = () => {
             </section>
 
             <section>
-                <h4 style={{ color: 'var(--accent-secondary)', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '1px', marginBottom: '8px' }}>Service Record</h4>
+                <h4 style={{ color: 'var(--accent-secondary)', textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '1px', marginBottom: '8px' }}>Experience</h4>
+                <div style={{ marginBottom: '16px' }}>
+                    <strong>Data Scientist</strong> <span style={{ fontSize: '0.8rem', opacity: 0.7 }}>| Defence Science Technology (NZDF)</span><br />
+                    <span style={{ fontSize: '0.75rem', color: 'var(--accent-primary)' }}>Nov 2025 – Feb 2026</span>
+                    <p style={{ fontSize: '0.85rem', marginTop: '4px' }}>
+                        Conducted data review for third-party marine traffic data against agreed metrics. Rapidly acquired domain knowledge to develop quantitative metrics for performance measurement.
+                    </p>
+                </div>
                 <div>
-                    <strong>Reservist (NZDF)</strong> <span style={{ fontSize: '0.8rem', opacity: 0.7 }}>| Nov 2021 – Present</span>
+                    <strong>Reservist</strong> <span style={{ fontSize: '0.8rem', opacity: 0.7 }}>| New Zealand Defence Force</span><br />
+                    <span style={{ fontSize: '0.75rem', opacity: 0.6 }}>Nov 2021 – Present</span>
                     <p style={{ fontSize: '0.85rem', marginTop: '4px' }}>
                         Trained in weapon systems operations. Expert in maintaining focus and performance in dynamic, high-pressure environments.
                     </p>
