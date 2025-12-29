@@ -1,24 +1,30 @@
 .overlay {
-    position: absolute;
+    position: fixed;
+    /* Fixed relative to viewport (body) */
     top: 50%;
     right: 5%;
-    /* Position to the right side */
     transform: translateY(-50%);
     width: 400px;
     max-width: 90vw;
     max-height: 80vh;
+    z-index: 10000;
+    /* Extremely high z-index to stay on top of everything */
+
     background: var(--bg-glass);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
     border: 1px solid var(--border-subtle);
     border-left: 2px solid var(--accent-primary);
     border-radius: 8px;
     padding: var(--space-lg);
     color: var(--text-primary);
+
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
     pointer-events: auto;
-    /* Re-enable clicks */
+    /* Ensure it captures clicks */
 }
 
 .header {
@@ -45,6 +51,7 @@
     font-size: 1.5rem;
     cursor: pointer;
     transition: color 0.2s;
+    padding: 0 8px;
 }
 
 .closeBtn:hover {
@@ -54,4 +61,18 @@
 .content {
     overflow-y: auto;
     flex: 1;
+}
+
+/* Scrollbar styling for content */
+.content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.content::-webkit-scrollbar-thumb {
+    background: var(--bg-secondary);
+    border-radius: 3px;
 }

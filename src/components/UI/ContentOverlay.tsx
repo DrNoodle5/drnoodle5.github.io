@@ -1,5 +1,5 @@
-import React from 'react';
-import type { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import styles from './ContentOverlay.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -11,7 +11,16 @@ interface ContentOverlayProps {
 }
 
 export const ContentOverlay: React.FC<ContentOverlayProps> = ({ isOpen, onClose, title, children }) => {
-    return (
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        return () => setMounted(false);
+    }, []);
+
+    if (!mounted) return null;
+
+    return createPortal(
         <AnimatePresence>
             {isOpen && (
                 <motion.div
@@ -30,6 +39,7 @@ export const ContentOverlay: React.FC<ContentOverlayProps> = ({ isOpen, onClose,
                     </div>
                 </motion.div>
             )}
-        </AnimatePresence>
+        </AnimatePresence>,
+        document.body
     );
 };
