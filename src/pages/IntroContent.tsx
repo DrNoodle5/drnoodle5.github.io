@@ -5,7 +5,7 @@ export const IntroContent: React.FC = () => {
         <div>
             <h3 style={{ color: 'var(--accent-primary)', marginBottom: '4px' }}>Dominicus Johan Nararya</h3>
             <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '16px' }}>
-                Data Scientist | Financial Markets | Strategy<br />
+                Data Scientist | Financial Markets | Decision-Making<br />
                 <span style={{ fontSize: '0.8rem' }}>M: 022 357 1401 | E: jojonararya@gmail.com</span>
             </p>
 
