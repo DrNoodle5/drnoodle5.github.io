@@ -10,8 +10,7 @@ export const IntroContent: React.FC = () => {
             </p>
             <hr style={{ borderColor: 'var(--border-subtle)', margin: '16px 0' }} />
             <p>
-                I am a creative developer with a background in military strategy and complex systems.
-                I build digital experiences that are not just functional but also resilient and adaptive.
+                I'm a Data Scientist, with a keen interest in Financial Markets, Game Theory and Strategy
             </p>
             <p>
                 My work bridges the gap between chaos and order, using code to visualize the unseen connections in data.
