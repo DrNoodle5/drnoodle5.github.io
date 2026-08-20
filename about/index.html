@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Johan Nararya</title>
+
+  <meta name="author" content="Dominicus Johan Nararya">
+  <meta name="description" content="Biography and research focus of Johan Nararya.">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐟</text></svg>">
+</head>
+<body>
+
+  <!-- Full-Screen Interactive ASCII Fish Schooling Canvas -->
+  <canvas id="cas-canvas"></canvas>
+
+  <div class="layout-common">
+    <!-- Top Navigation Header -->
+    <nav class="top-nav" aria-label="Breadcrumb Navigation">
+      <div class="nav-container">
+        <ul class="breadcrumbs">
+          <li><a href="../">johan-nararya</a></li>
+          <li class="sep">/</li>
+          <li><span>about</span></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="theme-toggle-btn" aria-label="Toggle dark/light mode">☾ Dark</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+      <article class="paper">
+        <header class="paper-header">
+          <h1>About Me</h1>
+          <div class="paper-meta">
+            <span>Dominicus Johan Nararya</span>
+            <span>•</span>
+            <span>Auckland, New Zealand</span>
+            <span>•</span>
+            <span>Data Science &amp; Complex Systems</span>
+          </div>
+        </header>
+
+        <p>
+          I am a postgraduate data science researcher at the University of Auckland, specializing in 
+          <strong>statistical modeling</strong>, <strong>time-series forecasting</strong>, 
+          <strong>anomaly detection</strong>, and <strong>complex adaptive systems</strong>.
+        </p>
+
+        <p>
+          My work explores how macro-level patterns and phase shifts emerge from decentralized, micro-level 
+          interactions—whether in high-frequency financial microstructure, prediction markets, vessel trajectory dynamics, 
+          or biological agent swarms.
+        </p>
+
+        <table class="metadata-table">
+          <tbody>
+            <tr>
+              <td class="key">Focus Areas</td>
+              <td class="value">Complex Adaptive Systems, Multivariate Time-Series, Unsupervised Anomaly Detection</td>
+            </tr>
+            <tr>
+              <td class="key">Education</td>
+              <td class="value">Master of Science (Data Science), Bachelor of Science (Data Science) — University of Auckland</td>
+            </tr>
+            <tr>
+              <td class="key">Core Stack</td>
+              <td class="value">Python, R, SQL, Polars, Scikit-Learn, PyTorch, C++ / Rust (High-Performance Sim)</td>
+            </tr>
+            <tr>
+              <td class="key">Affiliations</td>
+              <td class="value">Defence Science and Technology (DST) NZ, NZ Defence Force (Reservist)</td>
+            </tr>
+            <tr>
+              <td class="key">Contact</td>
+              <td class="value"><a href="mailto:jojonararya@gmail.com">jojonararya@gmail.com</a></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Research Philosophy &amp; Complex Systems</h2>
+        <p>
+          Traditional deterministic models often fail when confronted with non-linear feedback loops and sudden regime changes. 
+          I am fascinated by how collective intelligence arises without central coordination. The background simulation 
+          on this website illustrates Craig Reynolds’ <em>Boids</em> model—a three-rule local interaction system 
+          (Separation, Alignment, Cohesion) that spontaneously gives rise to the fluid, protective murmuration of pelagic fish schools.
+        </p>
+
+        <blockquote>
+          “The whole is not only more than the sum of its parts, but also fundamentally different in kind.”
+          <br>— Philip W. Anderson, <em>More Is Different</em> (1972)
+        </blockquote>
+
+        <h2>Experience &amp; Background</h2>
+        <p>
+          At <strong>Defence, Science and Technology (DST) New Zealand</strong>, I engineered spatial-temporal tracking 
+          algorithms that reconstructed vessel trajectories with 98% accuracy across challenging inshore and offshore AIS gaps, 
+          alongside automated schema verification systems for maritime surveillance.
+        </p>
+
+        <p>
+          Beyond research, I serve as a part-time reservist in the <strong>New Zealand Defence Force</strong>, cultivating high-pressure 
+          decision making, rigorous precision, and cross-functional team leadership.
+        </p>
+
+        <hr>
+
+        <h2>Navigation</h2>
+        <ul>
+          <li>Explore my research and software projects in the <a href="../projects/">Portfolio</a>.</li>
+          <li>Read my essays and mathematical notes in <a href="../writing/">Writing</a>.</li>
+          <li>Experiment directly with the <a href="../simulations/">ASCII CAS Simulator</a>.</li>
+          <li>View my full academic and professional record in the <a href="../cv/">Curriculum Vitae</a>.</li>
+        </ul>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>Johan Nararya &copy; 2026 • Built with semantic HTML, CSS &amp; Vanilla JS</p>
+    </footer>
+  </div>
+
+  <!-- Interactive Floating HUD for CAS Fish Parameters -->
+  <button id="cas-hud-toggle" class="cas-hud-toggle-floating" title="Adjust Fish Simulation Parameters">
+    <span>🐟</span> CAS Controls
+  </button>
+
+  <div id="cas-hud" class="cas-hud collapsed">
+    <div class="cas-hud-header">
+      <span>Fish CAS Parameters</span>
+      <button id="cas-hud-close" class="cas-hud-close" aria-label="Close controls">&times;</button>
+    </div>
+    <div class="cas-hud-row">
+      <label for="cas-count-slider">Fish Count (N):</label>
+      <input type="range" id="cas-count-slider" min="15" max="150" value="65">
+      <span id="cas-count-val">65</span>
+    </div>
+    <div class="cas-hud-row">
+      <label for="cas-fear-slider">Predator Radius:</label>
+      <input type="range" id="cas-fear-slider" min="60" max="320" value="180">
+      <span id="cas-fear-val">180px</span>
+    </div>
+    <div class="cas-hud-actions">
+      <button id="cas-scatter-btn" class="cas-hud-btn">⚡ Scatter School</button>
+    </div>
+  </div>
+
+  <!-- Core Scripts -->
+  <script src="../assets/js/ascii-fish-cas.js"></script>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

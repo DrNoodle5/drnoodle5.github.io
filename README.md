@@ -1,73 +1,71 @@
-# React + TypeScript + Vite
+# Johan Nararya (`drnoodle5.github.io`)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal academic and research website for **Dominicus Johan Nararya**, inspired by the editorial typography and aesthetic of [borretti.me](https://borretti.me/), enriched with an interactive **Complex Adaptive System (CAS) ASCII Fish Schooling** simulation and cyber-editorial **scrambling typography**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features
 
-## React Compiler
+1. **Borretti-Inspired Classical Editorial Typography & Aesthetics**:
+   - High-grade serif typography stack (Newsreader, EB Garamond, TeX Gyre Termes).
+   - Framed woodcut/engraving icons with smooth cubic-bezier hover expansion.
+   - Dual theme support: Warm Archival Parchment & Ink (Light) ↔ Deep Carbon & Luminous Crimson (Dark).
+   - Academic article formatting with LaTeX math equations, code blocks, metadata key-value tables, and clickable jump footnotes (`[1]`).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. **Complex Adaptive System (CAS) - ASCII Art Fish School**:
+   - Real-time decentralized agent simulation executing Craig Reynolds' canonical **Boids** flocking model (Separation, Alignment, Cohesion).
+   - Constructed entirely from animated, articulated ASCII fish morphology (`><(((°>`, `~<((((><`, `•><((~`) with dynamic velocity-dependent tail oscillation.
+   - **Predator / Cursor Evasion**: Fish detect mouse cursor proximity, execute emergency escape vectors, emit wake particles (`·`, `°`, `o`), and trigger emergent acoustic alarm waves across the school.
+   - Click ripples generate radial fluid displacement waves.
+   - Dedicated **[Simulation Lab](/simulations/)** and collapsible HUD for real-time parameter tuning.
 
-## Expanding the ESLint configuration
+3. **Endlessly Scrambling Alphanumeric Navigation**:
+   - Navigation items on the home page continuously cycle random alphanumeric characters per position (e.g. `1wSu)_op`, `9#zK!m~Q`), resolving and locking cleanly into their readable labels (`About Me`, `Portfolio & Work`, etc.) when hovered.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+4. **Zero-Bloat GitHub Pages Architecture**:
+   - 100% semantic HTML5, Vanilla CSS3, and ES6+ JavaScript.
+   - Instant loading, zero build-step overhead, and direct compatibility with GitHub Pages.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Directory Structure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+/drnoodle5.github.io/
+├── index.html                 # Home landing page with Borretti box & scrambling nav
+├── about/
+│   └── index.html             # Biography, research interests & education
+├── projects/
+│   └── index.html             # Portfolio (Prediction Markets, Market Regimes, DST NZ)
+├── writing/
+│   ├── index.html             # Writing & monographs index
+│   └── emergent-systems.html  # Essay on Boids and Collective Intelligence
+├── cv/
+│   └── index.html             # Curriculum Vitae viewer
+├── simulations/
+│   └── index.html             # Dedicated CAS Fish Schooling Interactive Lab
+├── assets/
+│   ├── css/
+│   │   └── main.css           # Core typography, design tokens, light/dark themes
+│   ├── js/
+│   │   ├── ascii-fish-cas.js  # ASCII Boids CAS simulation engine
+│   │   ├── scramble-text.js   # Alphanumeric scrambling & hover decrypt engine
+│   │   └── site.js            # Theme toggle, HUD controls & site utilities
+│   └── icons/                 # Custom SVG icons with woodcut/engraved aesthetics
+│       ├── about.svg
+│       ├── projects.svg
+│       ├── writing.svg
+│       ├── simulations.svg
+│       └── cv.svg
+├── Johan_Nararya_CV.pdf       # User Curriculum Vitae PDF
+└── README.md
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Adding Content & Customization
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Updating Profile & Projects**: Edit the corresponding `index.html` file in `about/`, `projects/`, `writing/`, or `cv/`.
+- **Publishing New Essays**: Duplicate `writing/emergent-systems.html`, update metadata and content, and link it from `writing/index.html`.
+- **Adjusting Fish Behavior**: Tweak `CAS_CONFIG` in `assets/js/ascii-fish-cas.js` to customize default speed, school size, or fear radius.
+- **Deploying**: Commit and push to the `main` branch on GitHub. GitHub Pages will serve the site immediately at `https://drnoodle5.github.io/`.

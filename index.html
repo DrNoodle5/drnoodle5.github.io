@@ -1,16 +1,145 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DrNoodle5</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Johan Nararya</title>
+
+  <meta name="author" content="Dominicus Johan Nararya">
+  <meta name="description" content="Personal website of Johan Nararya - Data Science, Complex Adaptive Systems, and Research.">
+  <meta property="og:title" content="Johan Nararya">
+  <meta property="og:description" content="Data Science, Complex Adaptive Systems, and Research.">
+  <meta property="og:type" content="website">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐟</text></svg>">
 </head>
-
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
-</body>
 
+  <!-- Full-Screen Interactive ASCII Fish Schooling Canvas (CAS Background) -->
+  <canvas id="cas-canvas"></canvas>
+
+  <div class="layout-common">
+    <div class="home-page">
+      <div class="box">
+        <h1>Johan Nararya</h1>
+        <p class="tagline">Data Science &amp; Complex Adaptive Systems</p>
+        
+        <hr class="divider">
+
+        <!-- Media Navigation with Framed Icons & Scrambling Labels -->
+        <nav class="media-nav" aria-label="Main Navigation">
+          <ul>
+            <li>
+              <a href="about/">
+                <div class="frame" aria-hidden="true">
+                  <div class="shadow">
+                    <img src="assets/icons/about.svg" alt="About icon" width="32" height="32">
+                  </div>
+                </div>
+                <div class="scramble-container">
+                  <span class="scramble-label" data-scramble="About Me">About Me</span>
+                  <span class="scramble-sublabel">Background, research &amp; interests</span>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="projects/">
+                <div class="frame" aria-hidden="true">
+                  <div class="shadow">
+                    <img src="assets/icons/projects.svg" alt="Portfolio icon" width="32" height="32">
+                  </div>
+                </div>
+                <div class="scramble-container">
+                  <span class="scramble-label" data-scramble="Portfolio &amp; Work">Portfolio &amp; Work</span>
+                  <span class="scramble-sublabel">Market regimes, anomaly detection &amp; trajectories</span>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="writing/">
+                <div class="frame" aria-hidden="true">
+                  <div class="shadow">
+                    <img src="assets/icons/writing.svg" alt="Writing icon" width="32" height="32">
+                  </div>
+                </div>
+                <div class="scramble-container">
+                  <span class="scramble-label" data-scramble="Writing &amp; Notes">Writing &amp; Notes</span>
+                  <span class="scramble-sublabel">Essays on complex systems &amp; statistical learning</span>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="simulations/">
+                <div class="frame" aria-hidden="true">
+                  <div class="shadow">
+                    <img src="assets/icons/simulations.svg" alt="Simulations icon" width="32" height="32">
+                  </div>
+                </div>
+                <div class="scramble-container">
+                  <span class="scramble-label" data-scramble="CAS Simulation Lab">CAS Simulation Lab</span>
+                  <span class="scramble-sublabel">Interactive ASCII Boids flocking playground</span>
+                </div>
+              </a>
+            </li>
+
+            <li>
+              <a href="cv/">
+                <div class="frame" aria-hidden="true">
+                  <div class="shadow">
+                    <img src="assets/icons/cv.svg" alt="Curriculum Vitae icon" width="32" height="32">
+                  </div>
+                </div>
+                <div class="scramble-container">
+                  <span class="scramble-label" data-scramble="Curriculum Vitae">Curriculum Vitae</span>
+                  <span class="scramble-sublabel">Experience, education &amp; PDF download</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="home-footer-info">
+          <span>University of Auckland</span>
+          <button class="theme-toggle-btn" aria-label="Toggle dark/light mode">☾ Dark</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Floating HUD for CAS Fish Parameters -->
+  <button id="cas-hud-toggle" class="cas-hud-toggle-floating" title="Adjust Fish Simulation Parameters">
+    <span>🐟</span> CAS Controls
+  </button>
+
+  <div id="cas-hud" class="cas-hud collapsed">
+    <div class="cas-hud-header">
+      <span>Fish CAS Parameters</span>
+      <button id="cas-hud-close" class="cas-hud-close" aria-label="Close controls">&times;</button>
+    </div>
+    <div class="cas-hud-row">
+      <label for="cas-count-slider">Fish Count (N):</label>
+      <input type="range" id="cas-count-slider" min="15" max="150" value="65">
+      <span id="cas-count-val">65</span>
+    </div>
+    <div class="cas-hud-row">
+      <label for="cas-fear-slider">Predator Radius:</label>
+      <input type="range" id="cas-fear-slider" min="60" max="320" value="180">
+      <span id="cas-fear-val">180px</span>
+    </div>
+    <div class="cas-hud-actions">
+      <button id="cas-scatter-btn" class="cas-hud-btn">⚡ Scatter School</button>
+    </div>
+  </div>
+
+  <!-- Core Scripts -->
+  <script src="assets/js/ascii-fish-cas.js"></script>
+  <script src="assets/js/scramble-text.js"></script>
+  <script src="assets/js/site.js"></script>
+</body>
 </html>

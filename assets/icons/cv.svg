@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Parchment Scroll with Seal / Curriculum Vitae -->
+  <path d="M26 18 C22 18 18 22 18 26 L18 74 C18 78 22 82 26 82 L74 82 C78 82 82 78 82 74 L82 26 C82 22 78 18 74 18 Z" stroke-width="2"/>
+  <line x1="28" y1="30" x2="55" y2="30" stroke-width="1.8"/>
+  <line x1="28" y1="40" x2="68" y2="40" stroke-width="1.2"/>
+  <line x1="28" y1="48" x2="72" y2="48" stroke-width="1.2"/>
+  <line x1="28" y1="56" x2="52" y2="56" stroke-width="1.2"/>
+  <line x1="28" y1="64" x2="48" y2="64" stroke-width="1.2"/>
+  <!-- Wax Seal -->
+  <circle cx="66" cy="64" r="10" stroke-width="1.8"/>
+  <circle cx="66" cy="64" r="7" stroke-width="1" stroke-dasharray="2 1"/>
+  <path d="M63 61 L69 67 M69 61 L63 67" stroke-width="1.2"/>
+</svg>

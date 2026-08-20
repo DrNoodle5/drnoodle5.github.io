@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>On Collective Intelligence: The Boids Model — Johan Nararya</title>
+
+  <meta name="author" content="Dominicus Johan Nararya">
+  <meta name="description" content="An inquiry into Craig Reynolds' flocking model and emergent complex adaptive systems in fish schools.">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐟</text></svg>">
+</head>
+<body>
+
+  <!-- Full-Screen Interactive ASCII Fish Schooling Canvas -->
+  <canvas id="cas-canvas"></canvas>
+
+  <div class="layout-common">
+    <!-- Top Navigation Header -->
+    <nav class="top-nav" aria-label="Breadcrumb Navigation">
+      <div class="nav-container">
+        <ul class="breadcrumbs">
+          <li><a href="../">johan-nararya</a></li>
+          <li class="sep">/</li>
+          <li><a href="./">writing</a></li>
+          <li class="sep">/</li>
+          <li><span>emergent-systems</span></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="theme-toggle-btn" aria-label="Toggle dark/light mode">☾ Dark</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+      <article class="paper">
+        <header class="paper-header">
+          <h1>On Collective Intelligence: Deconstructing the Boids Model and Emergent Fish Schools</h1>
+          <div class="paper-meta">
+            <span>Johan Nararya</span>
+            <span>•</span>
+            <span>February 21, 2026</span>
+            <span>•</span>
+            <span>Complex Adaptive Systems</span>
+          </div>
+        </header>
+
+        <p>
+          In 1986, computer graphics pioneer Craig Reynolds published a paper introducing an artificial life simulation called 
+          <em>Boids</em><sup class="fn-ref"><a href="#fn1" id="fnref1">[1]</a></sup>. With astonishing economy, Reynolds demonstrated that the intricate, 
+          mesmerizing choreography of pelagic fish schools and starlings does not require an executive commander or telepathic 
+          coordination. Rather, high-level macro-order is the spontaneous, emergent byproduct of purely local, decentralized 
+          micro-rules.
+        </p>
+
+        <h2>The Three Canonical Steering Forces</h2>
+        <p>
+          At each discrete time step $t$, an individual autonomous agent $i$ perceives its localized perceptual neighborhood $N_i$ 
+          and computes three steering force vectors:
+        </p>
+
+        <ol>
+          <li>
+            <strong>Separation ($\mathbf{F}_{\text{sep}}$):</strong> Steer to avoid crowding local flockmates. As distance $d \to 0$, 
+            repulsive force grows asymptotically ($1/d^2$ weighting), preventing collisions.
+            <pre><code>F_sep = sum((pos_i - pos_j) / dist_sq(i, j) for j in neighbors_close)</code></pre>
+          </li>
+          <li>
+            <strong>Alignment ($\mathbf{F}_{\text{ali}}$):</strong> Steer towards the average heading and velocity vector of local flockmates:
+            <pre><code>F_ali = normalize(mean(vel_j for j in neighbors)) * max_speed - vel_i</code></pre>
+          </li>
+          <li>
+            <strong>Cohesion ($\mathbf{F}_{\text{coh}}$):</strong> Steer towards the perceived center of mass of local flockmates:
+            <pre><code>center = mean(pos_j for j in neighbors)
+F_coh = normalize(center - pos_i) * max_speed - vel_i</code></pre>
+          </li>
+        </ol>
+
+        <h2>Predator Avoidance and Information Cascades</h2>
+        <p>
+          When a predator—or in our website background, the reader’s cursor—enters the school’s visual sphere ($r < R_{\text{fear}}$), 
+          an asymmetrical repulsion force is injected:
+        </p>
+
+        <blockquote>
+          $$\mathbf{F}_{\text{predator}} = -\frac{\mathbf{x}_{\text{mouse}} - \mathbf{x}_i}{\|\mathbf{x}_{\text{mouse}} - \mathbf{x}_i\|^2} \cdot K_{\text{panic}}$$
+        </blockquote>
+
+        <p>
+          Notice how the evasion dynamic ripples through the collective: fish closest to the mouse scatter abruptly, which in turn alters the 
+          alignment and cohesion centroids of their adjacent neighbors. The alarm signal travels across the school faster than the predator's 
+          physical speed, creating an emergent "flash expansion" or visual shockwave<sup class="fn-ref"><a href="#fn2" id="fnref2">[2]</a></sup>.
+        </p>
+
+        <h2>Mathematical Vector Field Implementation</h2>
+        <p>
+          In our ASCII engine running across these pages, we render each fish as an articulated ASCII string (`&gt;&lt;((((°&gt;`) with 
+          phase-lagged harmonic tail undulation $\theta_{\text{tail}} = A \sin(\omega t + \phi)$. Here is the core steering accumulation in ES6:
+        </p>
+
+<pre><code>class AsciiFish {
+  flock(school) {
+    let sep = new Vector2D(), ali = new Vector2D(), coh = new Vector2D();
+    // Compute Reynolds vectors over localized spatial radius...
+    sep.mult(CONFIG.separationWeight);
+    ali.mult(CONFIG.alignmentWeight);
+    coh.mult(CONFIG.cohesionWeight);
+    
+    this.applyForce(sep);
+    this.applyForce(ali);
+    this.applyForce(coh);
+  }
+}</code></pre>
+
+        <hr>
+
+        <div class="footnotes-section">
+          <h3>References &amp; Footnotes</h3>
+          <ol>
+            <li id="fn1">
+              Reynolds, C. W. (1987). <em>Flocks, herds and schools: A distributed behavioral model</em>. ACM SIGGRAPH Computer Graphics, 21(4), 25–34. 
+              <a href="#fnref1">&uarr; return</a>
+            </li>
+            <li id="fn2">
+              Couzin, I. D., Krause, J., James, R., Ruxton, G. D., &amp; Franks, N. R. (2002). <em>Collective memory and spatial sorting in animal groups</em>. Journal of Theoretical Biology, 218(1), 1–11. 
+              <a href="#fnref2">&uarr; return</a>
+            </li>
+          </ol>
+        </div>
+
+        <table class="metadata-table" style="margin-top: var(--size-4);">
+          <tbody>
+            <tr>
+              <td class="key">Article ID</td>
+              <td class="value">CAS-2026-02-01</td>
+            </tr>
+            <tr>
+              <td class="key">Keywords</td>
+              <td class="value">Complex Adaptive Systems, Boids Model, Flocking, Swarm Robotics, Emergence</td>
+            </tr>
+            <tr>
+              <td class="key">License</td>
+              <td class="value">Creative Commons BY-NC 4.0</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>Johan Nararya &copy; 2026 • Built with semantic HTML, CSS &amp; Vanilla JS</p>
+    </footer>
+  </div>
+
+  <!-- Interactive Floating HUD for CAS Fish Parameters -->
+  <button id="cas-hud-toggle" class="cas-hud-toggle-floating" title="Adjust Fish Simulation Parameters">
+    <span>🐟</span> CAS Controls
+  </button>
+
+  <div id="cas-hud" class="cas-hud collapsed">
+    <div class="cas-hud-header">
+      <span>Fish CAS Parameters</span>
+      <button id="cas-hud-close" class="cas-hud-close" aria-label="Close controls">&times;</button>
+    </div>
+    <div class="cas-hud-row">
+      <label for="cas-count-slider">Fish Count (N):</label>
+      <input type="range" id="cas-count-slider" min="15" max="150" value="65">
+      <span id="cas-count-val">65</span>
+    </div>
+    <div class="cas-hud-row">
+      <label for="cas-fear-slider">Predator Radius:</label>
+      <input type="range" id="cas-fear-slider" min="60" max="320" value="180">
+      <span id="cas-fear-val">180px</span>
+    </div>
+    <div class="cas-hud-actions">
+      <button id="cas-scatter-btn" class="cas-hud-btn">⚡ Scatter School</button>
+    </div>
+  </div>
+
+  <!-- Core Scripts -->
+  <script src="../assets/js/ascii-fish-cas.js"></script>
+  <script src="../assets/js/site.js"></script>
+</body>
+</html>

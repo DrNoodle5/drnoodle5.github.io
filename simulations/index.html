@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CAS Simulation Lab — Johan Nararya</title>
+
+  <meta name="author" content="Dominicus Johan Nararya">
+  <meta name="description" content="Interactive ASCII Art Fish Schooling Complex Adaptive System Simulator.">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐟</text></svg>">
+
+  <style>
+    .lab-controls-panel {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: var(--size-3) 0;
+      padding: var(--size-2);
+      border: 1px solid var(--border-color);
+      background-color: var(--code-bg);
+    }
+    .control-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: var(--font-xs);
+    }
+    .control-item label {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .control-item input[type="range"] {
+      accent-color: var(--link-color);
+      cursor: pointer;
+    }
+    .preset-btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: var(--size-2) 0;
+    }
+    .preset-btn {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 6px 12px;
+      background-color: var(--bg-color);
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .preset-btn:hover {
+      border-color: var(--link-color);
+      color: var(--link-color);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Full-Screen Interactive ASCII Fish Schooling Canvas -->
+  <canvas id="cas-canvas"></canvas>
+
+  <div class="layout-common">
+    <!-- Top Navigation Header -->
+    <nav class="top-nav" aria-label="Breadcrumb Navigation">
+      <div class="nav-container">
+        <ul class="breadcrumbs">
+          <li><a href="../">johan-nararya</a></li>
+          <li class="sep">/</li>
+          <li><span>simulations</span></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="theme-toggle-btn" aria-label="Toggle dark/light mode">☾ Dark</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+      <article class="paper">
+        <header class="paper-header">
+          <h1>Complex Adaptive Systems Lab</h1>
+          <div class="paper-meta">
+            <span>Interactive ASCII Boids Flocking Simulation</span>
+            <span>•</span>
+            <span>Real-time Emergent Dynamics</span>
+          </div>
+        </header>
+
+        <p>
+          This laboratory demonstrates a <strong>Complex Adaptive System (CAS)</strong> in action. Move your mouse or click 
+          to perturb the school. Observe how the decentralized agents rapidly disperse, transmit acoustic alarm signals, and 
+          re-cohere into tight, self-organizing aquatic structures.
+        </p>
+
+        <h2>Simulation Presets</h2>
+        <div class="preset-btn-group">
+          <button class="preset-btn" id="preset-baitball">🌀 Dense Baitball</button>
+          <button class="preset-btn" id="preset-pelagic">🌊 Pelagic Migration</button>
+          <button class="preset-btn" id="preset-hyperfear">⚡ High Predator Alert</button>
+          <button class="preset-btn" id="preset-solitary">✨ Dispersed Solitary</button>
+        </div>
+
+        <h2>Parameter Tuning</h2>
+        <div class="lab-controls-panel">
+          <div class="control-item">
+            <label for="lab-count">
+              <span>Population (N):</span>
+              <span id="lab-count-val">80</span>
+            </label>
+            <input type="range" id="lab-count" min="20" max="200" value="80">
+          </div>
+
+          <div class="control-item">
+            <label for="lab-fear">
+              <span>Predator Fear Radius:</span>
+              <span id="lab-fear-val">200px</span>
+            </label>
+            <input type="range" id="lab-fear" min="50" max="400" value="200">
+          </div>
+
+          <div class="control-item">
+            <label for="lab-sep">
+              <span>Separation Force:</span>
+              <span id="lab-sep-val">1.8</span>
+            </label>
+            <input type="range" id="lab-sep" min="0.5" max="4.0" step="0.1" value="1.8">
+          </div>
+
+          <div class="control-item">
+            <label for="lab-ali">
+              <span>Alignment Force:</span>
+              <span id="lab-ali-val">1.2</span>
+            </label>
+            <input type="range" id="lab-ali" min="0.2" max="3.5" step="0.1" value="1.2">
+          </div>
+
+          <div class="control-item">
+            <label for="lab-coh">
+              <span>Cohesion Force:</span>
+              <span id="lab-coh-val">1.0</span>
+            </label>
+            <input type="range" id="lab-coh" min="0.2" max="3.0" step="0.1" value="1.0">
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-bottom: var(--size-3);">
+          <button class="preset-btn" id="lab-scatter" style="background-color: var(--badge-bg); font-weight: bold;">⚡ Scatter Entire School</button>
+        </div>
+
+        <h2>Emergent Phenomena to Observe</h2>
+        <ol>
+          <li>
+            <strong>Information Shockwaves:</strong> When you quickly flick the cursor through a cluster, only the nearest 
+            fish directly perceive the predator. However, their sudden evasive acceleration breaks alignment with neighbors, 
+            triggering a visible cascade that sweeps across the entire school.
+          </li>
+          <li>
+            <strong>Vortical Swirls &amp; Gyres:</strong> When boundary steering balances with cohesion, fish naturally transition 
+            into rotating toruses (baitballs), minimizing perimeter exposure.
+          </li>
+          <li>
+            <strong>Kinematic Undulation:</strong> Each ASCII creature dynamically speeds up its harmonic tail flapping 
+            frequency proportional to its instantaneous velocity $\mathbf{v}$.
+          </li>
+        </ol>
+
+        <hr>
+
+        <p style="font-size: var(--font-s); color: var(--text-muted); text-align: center;">
+          Read the mathematical foundation in the <a href="../writing/emergent-systems.html">Flocking Theory Essay &rarr;</a>
+        </p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>Johan Nararya &copy; 2026 • Built with semantic HTML, CSS &amp; Vanilla JS</p>
+    </footer>
+  </div>
+
+  <!-- Core Scripts -->
+  <script src="../assets/js/ascii-fish-cas.js"></script>
+  <script src="../assets/js/site.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const countInput = document.getElementById('lab-count');
+      const countVal = document.getElementById('lab-count-val');
+      const fearInput = document.getElementById('lab-fear');
+      const fearVal = document.getElementById('lab-fear-val');
+      const sepInput = document.getElementById('lab-sep');
+      const sepVal = document.getElementById('lab-sep-val');
+      const aliInput = document.getElementById('lab-ali');
+      const aliVal = document.getElementById('lab-ali-val');
+      const cohInput = document.getElementById('lab-coh');
+      const cohVal = document.getElementById('lab-coh-val');
+      const scatterBtn = document.getElementById('lab-scatter');
+
+      if (countInput) {
+        countInput.addEventListener('input', (e) => {
+          const val = parseInt(e.target.value, 10);
+          countVal.textContent = val;
+          if (window.AsciiFishCAS) window.AsciiFishCAS.setCount(val);
+        });
+      }
+
+      if (fearInput) {
+        fearInput.addEventListener('input', (e) => {
+          const val = parseInt(e.target.value, 10);
+          fearVal.textContent = `${val}px`;
+          if (window.AsciiFishCAS) window.AsciiFishCAS.setFearRadius(val);
+        });
+      }
+
+      if (sepInput) {
+        sepInput.addEventListener('input', (e) => {
+          const val = parseFloat(e.target.value);
+          sepVal.textContent = val.toFixed(1);
+          if (window.AsciiFishCAS) window.AsciiFishCAS.setSeparation(val);
+        });
+      }
+
+      if (aliInput) {
+        aliInput.addEventListener('input', (e) => {
+          const val = parseFloat(e.target.value);
+          aliVal.textContent = val.toFixed(1);
+          if (window.AsciiFishCAS) window.AsciiFishCAS.setAlignment(val);
+        });
+      }
+
+      if (cohInput) {
+        cohInput.addEventListener('input', (e) => {
+          const val = parseFloat(e.target.value);
+          cohVal.textContent = val.toFixed(1);
+          if (window.AsciiFishCAS) window.AsciiFishCAS.setCohesion(val);
+        });
+      }
+
+      if (scatterBtn) {
+        scatterBtn.addEventListener('click', () => {
+          if (window.AsciiFishCAS) window.AsciiFishCAS.scatter();
+        });
+      }
+
+      // Presets
+      document.getElementById('preset-baitball')?.addEventListener('click', () => {
+        if (window.AsciiFishCAS) {
+          window.AsciiFishCAS.setCount(110);
+          window.AsciiFishCAS.setCohesion(2.6);
+          window.AsciiFishCAS.setSeparation(2.0);
+          window.AsciiFishCAS.setAlignment(1.8);
+          window.AsciiFishCAS.setFearRadius(150);
+          if (countInput) { countInput.value = 110; countVal.textContent = 110; }
+          if (cohInput) { cohInput.value = 2.6; cohVal.textContent = '2.6'; }
+          if (sepInput) { sepInput.value = 2.0; sepVal.textContent = '2.0'; }
+        }
+      });
+
+      document.getElementById('preset-pelagic')?.addEventListener('click', () => {
+        if (window.AsciiFishCAS) {
+          window.AsciiFishCAS.setCount(70);
+          window.AsciiFishCAS.setCohesion(1.0);
+          window.AsciiFishCAS.setSeparation(1.6);
+          window.AsciiFishCAS.setAlignment(2.2);
+          window.AsciiFishCAS.setFearRadius(180);
+          if (countInput) { countInput.value = 70; countVal.textContent = 70; }
+          if (aliInput) { aliInput.value = 2.2; aliVal.textContent = '2.2'; }
+        }
+      });
+
+      document.getElementById('preset-hyperfear')?.addEventListener('click', () => {
+        if (window.AsciiFishCAS) {
+          window.AsciiFishCAS.setFearRadius(340);
+          window.AsciiFishCAS.scatter();
+          if (fearInput) { fearInput.value = 340; fearVal.textContent = '340px'; }
+        }
+      });
+
+      document.getElementById('preset-solitary')?.addEventListener('click', () => {
+        if (window.AsciiFishCAS) {
+          window.AsciiFishCAS.setCount(35);
+          window.AsciiFishCAS.setCohesion(0.2);
+          window.AsciiFishCAS.setSeparation(3.0);
+          window.AsciiFishCAS.setAlignment(0.4);
+          if (countInput) { countInput.value = 35; countVal.textContent = 35; }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

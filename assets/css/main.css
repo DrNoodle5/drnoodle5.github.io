@@ -1,0 +1,829 @@
+/* ==========================================================================
+   DrNoodle5 / Johan Nararya - Personal Website
+   Inspired by the typographic & editorial craft of borretti.me
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@300;400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&display=swap');
+
+:root {
+  /* Color Palette - Light Mode (Warm Archival Paper & Ink) */
+  --bg-color: #faf8f2;
+  --bg-translucent: rgba(250, 248, 242, 0.92);
+  --card-bg: rgba(255, 254, 250, 0.9);
+  --card-shadow: rgba(40, 30, 20, 0.08);
+  --card-border: #1a1917;
+  
+  --text-color: #1a1917;
+  --text-muted: #6b6459;
+  --text-dim: #968e82;
+  --link-color: #9e1a2b;
+  --link-hover: #b51f33;
+  --accent-color: #9e1a2b;
+  
+  --border-color: #dfd9cb;
+  --border-dark: #1a1917;
+  --border-rule: #c8c1b1;
+  
+  --code-bg: #f2eee3;
+  --code-border: #ded8cb;
+  --code-text: #2d2822;
+
+  --badge-bg: #eae4d5;
+  --badge-text: #3c362d;
+
+  --fish-glyph-color: rgba(26, 25, 23, 0.32);
+  --fish-lead-color: rgba(158, 26, 43, 0.75);
+  --fish-bubble-color: rgba(107, 100, 89, 0.25);
+  --ripple-color: rgba(158, 26, 43, 0.3);
+
+  /* Spacing Scale */
+  --size-1: 12px;
+  --size-2: 24px;
+  --size-3: 36px;
+  --size-4: 48px;
+  --size-5: 64px;
+  --size-6: 80px;
+
+  /* Typography Scale */
+  --font-base: 17px;
+  --font-xs: 12px;
+  --font-s: 14px;
+  --font-m: 17px;
+  --font-2: 21px;
+  --font-3: 26px;
+  --font-4: 34px;
+  --font-5: 44px;
+
+  --font-serif: "Newsreader", "EB Garamond", "TeX Gyre Termes", "Times New Roman", Times, serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Courier New", Courier, monospace;
+
+  --medialist-initial: 52px;
+  --medialist-final: 68px;
+}
+
+[data-theme="dark"] {
+  /* Color Palette - Dark Mode (Midnight Ink & Luminous Accent) */
+  --bg-color: #121316;
+  --bg-translucent: rgba(18, 19, 22, 0.92);
+  --card-bg: rgba(22, 23, 28, 0.92);
+  --card-shadow: rgba(0, 0, 0, 0.45);
+  --card-border: #ded8cb;
+
+  --text-color: #ece8df;
+  --text-muted: #a39c90;
+  --text-dim: #706b61;
+  --link-color: #e5576d;
+  --link-hover: #f06e82;
+  --accent-color: #e5576d;
+
+  --border-color: #2a2c35;
+  --border-dark: #ded8cb;
+  --border-rule: #363945;
+
+  --code-bg: #1a1b22;
+  --code-border: #2a2c36;
+  --code-text: #eae5dc;
+
+  --badge-bg: #242630;
+  --badge-text: #d5cfc4;
+
+  --fish-glyph-color: rgba(236, 232, 223, 0.32);
+  --fish-lead-color: rgba(229, 87, 109, 0.85);
+  --fish-bubble-color: rgba(163, 156, 144, 0.25);
+  --ripple-color: rgba(229, 87, 109, 0.4);
+}
+
+/* ==========================================================================
+   Base Styles & Reset
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--font-base);
+  min-height: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  line-height: 1.65;
+  min-height: 100vh;
+  position: relative;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  overflow-x: hidden;
+}
+
+/* Background Canvas for ASCII Fish Complex Adaptive System */
+#cas-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: auto; /* allows mouse interaction for ripples/scattering */
+  display: block;
+}
+
+/* Main Layout Container */
+.layout-common {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   Top Navigation Bar (Inner Pages)
+   ========================================================================== */
+
+nav.top-nav {
+  width: 100%;
+  border-bottom: 1px solid var(--border-dark);
+  background-color: var(--bg-translucent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 10px var(--size-2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav.top-nav .nav-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav.top-nav ul.breadcrumbs {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-s);
+}
+
+nav.top-nav ul.breadcrumbs li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+nav.top-nav ul.breadcrumbs a {
+  color: var(--text-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+nav.top-nav ul.breadcrumbs a:hover {
+  color: var(--link-color);
+  border-color: var(--link-color);
+}
+
+nav.top-nav ul.breadcrumbs .sep {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.theme-toggle-btn, .cas-toggle-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle-btn:hover, .cas-toggle-btn:hover {
+  border-color: var(--border-dark);
+  color: var(--link-color);
+  background-color: var(--code-bg);
+}
+
+/* ==========================================================================
+   Home Landing Page (Borretti-inspired centered card)
+   ========================================================================== */
+
+.home-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--size-2);
+  min-height: calc(100vh - 60px);
+}
+
+.home-page .box {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 8px 30px var(--card-shadow), 0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: var(--size-4) var(--size-3);
+  max-width: 580px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.home-page .box h1 {
+  font-size: var(--font-4);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  font-family: var(--font-serif);
+}
+
+.home-page .box .tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: var(--font-m);
+  margin-bottom: var(--size-3);
+}
+
+.home-page .box hr.divider {
+  border: none;
+  height: 1px;
+  background-color: var(--border-rule);
+  margin: var(--size-2) auto;
+  width: 75%;
+}
+
+/* Media Navigation List */
+nav.media-nav {
+  margin-top: var(--size-2);
+}
+
+nav.media-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+nav.media-nav ul li a {
+  display: flex;
+  align-items: center;
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+}
+
+nav.media-nav ul li a:hover {
+  border-color: var(--border-color);
+  background-color: var(--code-bg);
+}
+
+/* Framed Icon Box with smooth zoom effect */
+nav.media-nav ul li a .frame {
+  width: var(--medialist-initial);
+  height: var(--medialist-initial);
+  min-width: var(--medialist-initial);
+  min-height: var(--medialist-initial);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--border-dark);
+  background-color: var(--bg-color);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+nav.media-nav ul li a .frame .shadow {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+nav.media-nav ul li a .frame svg,
+nav.media-nav ul li a .frame img {
+  width: 32px;
+  height: 32px;
+  color: var(--text-color);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s ease;
+}
+
+/* On hover: frame zooms and icon highlights */
+nav.media-nav ul li a:hover .frame {
+  border-color: var(--link-color);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+  transform: scale(1.06);
+}
+
+nav.media-nav ul li a:hover .frame svg {
+  transform: scale(1.15);
+  color: var(--link-color);
+}
+
+/* ==========================================================================
+   Scrambling / Matrix Decrypt Typography
+   ========================================================================== */
+
+.scramble-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 18px;
+  text-align: left;
+  flex: 1;
+}
+
+.scramble-label {
+  font-family: var(--font-mono);
+  font-size: var(--font-2);
+  line-height: 1.25;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-color);
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+  user-select: none;
+}
+
+/* Subtle glowing pulse when locked */
+.scramble-label.is-locked {
+  color: var(--link-color);
+  font-weight: 700;
+}
+
+.scramble-sublabel {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--font-s);
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.home-footer-info {
+  margin-top: var(--size-3);
+  font-family: var(--font-mono);
+  font-size: var(--font-xs);
+  color: var(--text-dim);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+  padding-top: var(--size-1);
+}
+
+.home-footer-info a {
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--text-dim);
+}
+
+.home-footer-info a:hover {
+  color: var(--link-color);
+  border-bottom-style: solid;
+}
+
+/* ==========================================================================
+   Article & Content Layout (Borretti-inspired)
+   ========================================================================== */
+
+main.content-area {
+  width: 100%;
+  flex: 1;
+  padding: var(--size-3) var(--size-2);
+}
+
+article.paper {
+  max-width: 860px;
+  margin: 0 auto;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 6px 24px var(--card-shadow);
+  padding: var(--size-4) var(--size-4);
+  position: relative;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@media (max-width: 640px) {
+  article.paper {
+    padding: var(--size-3) var(--size-2);
+  }
+}
+
+/* Header Section */
+article header.paper-header {
+  border-bottom: 1px solid var(--border-dark);
+  padding-bottom: var(--size-2);
+  margin-bottom: var(--size-3);
+}
+
+article header.paper-header h1 {
+  font-size: var(--font-4);
+  line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-family: var(--font-serif);
+}
+
+article header.paper-header .paper-meta {
+  font-family: var(--font-mono);
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Typography elements within article */
+article h2 {
+  font-size: var(--font-3);
+  line-height: 1.3;
+  font-weight: 600;
+  margin-top: var(--size-3);
+  margin-bottom: var(--size-1);
+  border-bottom: 1px solid var(--border-rule);
+  padding-bottom: 4px;
+}
+
+article h3 {
+  font-size: var(--font-2);
+  line-height: 1.35;
+  font-weight: 600;
+  margin-top: var(--size-2);
+  margin-bottom: var(--size-1);
+}
+
+article p {
+  margin-bottom: var(--size-2);
+  text-align: justify;
+  line-height: 1.7;
+}
+
+article a {
+  color: var(--link-color);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(158, 26, 43, 0.2);
+  transition: all 0.2s ease;
+}
+
+article a:hover {
+  color: var(--link-hover);
+  border-bottom-color: var(--link-hover);
+}
+
+article blockquote {
+  margin: var(--size-2) 0;
+  padding: var(--size-1) var(--size-2);
+  border-left: 3px solid var(--border-dark);
+  background-color: var(--code-bg);
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+article hr {
+  border: none;
+  text-align: center;
+  margin: var(--size-3) 0;
+  position: relative;
+}
+
+article hr::after {
+  content: "❧";
+  display: inline-block;
+  font-size: 18px;
+  color: var(--text-muted);
+}
+
+/* Lists */
+article ul, article ol {
+  margin-bottom: var(--size-2);
+  padding-left: var(--size-3);
+}
+
+article li {
+  margin-bottom: 6px;
+}
+
+/* Tables & Key-Value Metadata tables */
+table.metadata-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--size-2) 0;
+  font-size: var(--font-s);
+}
+
+table.metadata-table td {
+  padding: 8px 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+table.metadata-table tr:last-child td {
+  border-bottom: 1px solid var(--border-color);
+}
+
+table.metadata-table .key {
+  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: var(--font-xs);
+  width: 25%;
+  color: var(--text-muted);
+}
+
+table.metadata-table .value {
+  font-family: var(--font-serif);
+  color: var(--text-color);
+}
+
+/* Code & Preformatted Blocks */
+pre, code {
+  font-family: var(--font-mono);
+}
+
+:not(pre) > code {
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  color: var(--code-text);
+  padding: 2px 6px;
+  font-size: 0.88em;
+  border-radius: 3px;
+}
+
+pre {
+  background-color: var(--code-bg);
+  border: 1px solid var(--code-border);
+  padding: var(--size-2);
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.55;
+  margin-bottom: var(--size-2);
+  color: var(--code-text);
+}
+
+/* Footnotes */
+sup.fn-ref {
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: super;
+  padding: 0 2px;
+}
+
+sup.fn-ref a {
+  color: var(--link-color);
+  font-family: var(--font-mono);
+}
+
+.footnotes-section {
+  margin-top: var(--size-4);
+  border-top: 1px solid var(--border-rule);
+  padding-top: var(--size-2);
+  font-size: var(--font-s);
+  color: var(--text-muted);
+}
+
+/* Projects & Grid List */
+.project-card {
+  border: 1px solid var(--border-color);
+  padding: var(--size-2);
+  margin-bottom: var(--size-2);
+  background-color: var(--bg-color);
+  transition: all 0.2s ease;
+}
+
+.project-card:hover {
+  border-color: var(--border-dark);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.project-card .project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+.project-card .project-title {
+  font-size: var(--font-2);
+  font-weight: 600;
+}
+
+.project-card .project-date {
+  font-family: var(--font-mono);
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.tag-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 2px 8px;
+  background-color: var(--badge-bg);
+  color: var(--badge-text);
+  border-radius: 2px;
+  border: 1px solid var(--border-color);
+}
+
+/* ==========================================================================
+   Complex Adaptive System Interactive HUD / Floating Controls
+   ========================================================================== */
+
+.cas-hud {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 6px 20px var(--card-shadow);
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  max-width: 320px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.cas-hud.collapsed {
+  transform: translateY(calc(100% + 40px));
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cas-hud-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+
+.cas-hud-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cas-hud-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.cas-hud-row label {
+  color: var(--text-muted);
+}
+
+.cas-hud-row input[type="range"] {
+  width: 120px;
+  accent-color: var(--link-color);
+}
+
+.cas-hud-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 8px;
+}
+
+.cas-hud-btn {
+  flex: 1;
+  background-color: var(--code-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 6px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.cas-hud-btn:hover {
+  border-color: var(--border-dark);
+  color: var(--link-color);
+}
+
+.cas-hud-toggle-floating {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 998;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 6px 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px var(--card-shadow);
+  color: var(--text-color);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cas-hud-toggle-floating:hover {
+  color: var(--link-color);
+  border-color: var(--link-color);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+footer.site-footer {
+  border-top: 1px solid var(--border-dark);
+  background-color: var(--bg-translucent);
+  padding: var(--size-2);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+  position: relative;
+  z-index: 10;
+}
+
+footer.site-footer a {
+  color: var(--text-color);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--text-dim);
+}
+
+footer.site-footer a:hover {
+  color: var(--link-color);
+  border-bottom-style: solid;
+}
+
+/* Responsive adjustments */
+@media (max-width: 540px) {
+  :root {
+    --font-base: 15px;
+  }
+  .home-page .box {
+    padding: var(--size-3) var(--size-2);
+  }
+  nav.media-nav ul li a .frame {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .scramble-label {
+    font-size: 17px;
+  }
+  .cas-hud {
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Classical Quill, Open Codex / Tome & Candle -->
+  <path d="M20 78 C25 68 40 68 50 72 C60 68 75 68 80 78 L80 32 C75 24 60 24 50 28 C40 24 25 24 20 32 Z" stroke-width="2"/>
+  <line x1="50" y1="28" x2="50" y2="72" stroke-width="2"/>
+  <path d="M28 38 C35 34 43 35 46 38" stroke-width="1.2"/>
+  <path d="M28 46 C35 42 43 43 46 46" stroke-width="1.2"/>
+  <path d="M28 54 C35 50 43 51 46 54" stroke-width="1.2"/>
+  <path d="M54 38 C57 35 65 34 72 38" stroke-width="1.2"/>
+  <path d="M54 46 C57 43 65 42 72 46" stroke-width="1.2"/>
+  <path d="M54 54 C57 51 65 50 72 54" stroke-width="1.2"/>
+  <!-- Feather quill across the book -->
+  <path d="M78 12 C72 20 62 38 48 62 L46 66 L50 64 C62 50 78 30 84 14 C84 14 80 14 78 12 Z" stroke-width="1.8" fill="none"/>
+  <line x1="48" y1="62" x2="74" y2="24" stroke-width="1"/>
+</svg>
