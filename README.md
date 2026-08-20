@@ -1,6 +1,6 @@
 # Johan Nararya (`drnoodle5.github.io`)
 
-Personal academic and research website for **Dominicus Johan Nararya**, inspired by the editorial typography and aesthetic of [borretti.me](https://borretti.me/), enriched with an interactive **Complex Adaptive System (CAS) ASCII Fish Schooling** simulation and cyber-editorial **scrambling typography**.
+Personal academic and research website for **Dominicus Johan Nararya**
 
 ---
 
