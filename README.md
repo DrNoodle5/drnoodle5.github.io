@@ -1,4 +1,4 @@
-# Johan Nararya (`drnoodle5.github.io`)
+# Dominicus Johan Nararya (`drnoodle5.github.io`)
 
 Personal academic and research website for **Dominicus Johan Nararya**
 
@@ -69,3 +69,4 @@ Personal academic and research website for **Dominicus Johan Nararya**
 - **Publishing New Essays**: Duplicate `writing/emergent-systems.html`, update metadata and content, and link it from `writing/index.html`.
 - **Adjusting Fish Behavior**: Tweak `CAS_CONFIG` in `assets/js/ascii-fish-cas.js` to customize default speed, school size, or fear radius.
 - **Deploying**: Commit and push to the `main` branch on GitHub. GitHub Pages will serve the site immediately at `https://drnoodle5.github.io/`.
+

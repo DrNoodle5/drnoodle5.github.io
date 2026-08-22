@@ -1,7 +1,7 @@
 /**
  * Scramble Typography Engine - Cyber-Editorial Decrypt & Continuous Mutation
  * Continuously scrambles alphanumeric characters until hovered, then cleanly decrypts.
- * Written for DrNoodle5 (Johan Nararya)
+ * Written for DrNoodle5 (Dominicus Johan Nararya)
  */
 
 (function () {

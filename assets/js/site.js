@@ -1,6 +1,6 @@
 /**
  * Site Utilities - Theme Toggle, CAS Controls HUD & Helpers
- * DrNoodle5 (Johan Nararya)
+ * DrNoodle5 (Dominicus Johan Nararya)
  */
 
 (function () {

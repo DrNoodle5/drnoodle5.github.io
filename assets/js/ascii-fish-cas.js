@@ -1,7 +1,7 @@
 /**
  * ASCII Fish Schooling Simulation - Complex Adaptive System (CAS)
  * Demonstrating Emergent Collective Behavior & Reynolds Flocking (Boids)
- * Written for DrNoodle5 (Johan Nararya)
+ * Written for DrNoodle5 (Dominicus Johan Nararya)
  */
 
 (function () {
