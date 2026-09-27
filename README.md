@@ -52,12 +52,12 @@ Personal academic and research website for **Dominicus Johan Nararya**
 │   │   ├── ascii-fish-cas.js  # ASCII Boids CAS simulation engine
 │   │   ├── scramble-text.js   # Alphanumeric scrambling & hover decrypt engine
 │   │   └── site.js            # Theme toggle, HUD controls & site utilities
-│   └── icons/                 # Custom SVG icons with woodcut/engraved aesthetics
-│       ├── about.svg
-│       ├── projects.svg
-│       ├── writing.svg
-│       ├── simulations.svg
-│       └── cv.svg
+│   └── icons/                 # Curated artwork & painting miniature icons
+│       ├── about_me.jpeg
+│       ├── portfolio_work.jpeg
+│       ├── writings_notes.jpeg
+│       ├── simulations.jpeg
+│       └── cv.jpeg
 ├── Johan_Nararya_CV.pdf       # User Curriculum Vitae PDF
 └── README.md
 ```
