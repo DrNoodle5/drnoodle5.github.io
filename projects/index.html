@@ -45,9 +45,44 @@
         </header>
 
         <p>
-          A selection of projects spanning unsupervised machine learning, financial econometrics, 
-          maritime spatial-temporal tracking, and agent-based emergence simulations.
+          A selection of projects spanning maritime acoustic surveillance, unsupervised machine learning, 
+          financial econometrics, spatial-temporal tracking, and agent-based emergence simulations.
         </p>
+
+        <!-- Featured Project: Masters Dissertation -->
+        <div class="project-card">
+          <div class="project-header">
+            <h2 class="project-title">Building an Underwater Vessel Detector (Masters Industry Dissertation)</h2>
+            <span class="project-date">2026</span>
+          </div>
+          <p>
+            <strong>Industry Partner:</strong> Defence Science and Technology (DST) New Zealand &bull; 
+            <strong>Institution:</strong> University of Auckland (Master of Data Science)
+          </p>
+          <p>
+            Investigated passive acoustic monitoring (PAM) for maritime domain awareness along Auckland’s Hauraki Gulf. 
+            Engineered a feature-space compression pipeline—filtering 148 spectral and temporal indicators down to 76 key predictors 
+            spanning LOFAR, DEMON, and noise-normalized broadband acoustics to mitigate extreme autocorrelation and ambient littoral noise.
+          </p>
+          <p>
+            Enforced strict chronological day-based block validation to prevent spatial-temporal leakage. Hyperparameter-tuned 
+            gradient-boosted ensembles (XGBoost, CatBoost) achieved <strong>98.41%</strong> validation accuracy with 0.99 vessel precision, 
+            significantly outperforming deep neural networks while operating efficiently within edge surveillance compute constraints.
+          </p>
+          <p style="margin-bottom: var(--size-1);">
+            <a href="../MDATS_424534841_Dominicus_Nararya (1).pdf" target="_blank" rel="noopener" style="font-family: var(--font-mono); font-size: var(--font-xs);">
+              📄 Read Full Dissertation PDF (52 pages) &rarr;
+            </a>
+          </p>
+          <div class="project-tags">
+            <span class="tag-badge">DST New Zealand</span>
+            <span class="tag-badge">Underwater Acoustics</span>
+            <span class="tag-badge">XGBoost / CatBoost</span>
+            <span class="tag-badge">Signal Processing</span>
+            <span class="tag-badge">Edge ML</span>
+            <span class="tag-badge">Dissertation</span>
+          </div>
+        </div>
 
         <!-- Project 1 -->
         <div class="project-card">
