@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clarity, Medication, and a Fire Lit Under Me — Dominicus Johan Nararya</title>
+
+  <meta name="author" content="Dominicus Johan Nararya">
+  <meta name="description"
+    content="On dealing with severe late-diagnosed ADHD, why getting medicated matters for reaching your potential, and finally having a fire lit under me.">
+
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐟</text></svg>">
+</head>
+
+<body>
+
+  <!-- Full-Screen Interactive ASCII Fish Schooling Canvas -->
+  <canvas id="cas-canvas"></canvas>
+
+  <div class="layout-common">
+    <!-- Top Navigation Header -->
+    <nav class="top-nav" aria-label="Breadcrumb Navigation">
+      <div class="nav-container">
+        <ul class="breadcrumbs">
+          <li><a href="../../">johan-nararya</a></li>
+          <li class="sep">/</li>
+          <li><a href="../">writing</a></li>
+          <li class="sep">/</li>
+          <li><span>late-diagnosed-adhd</span></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="theme-toggle-btn" aria-label="Toggle dark/light mode">☾ Dark</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+      <article class="paper">
+        <header class="paper-header">
+          <h1>Clarity, Medication, and a Fire Lit Under Me</h1>
+          <div class="paper-meta">
+            <span>Dominicus Johan Nararya</span>
+            <span>•</span>
+            <span>Personal Essay</span>
+            <span>•</span>
+            <span>On Severe ADHD &amp; Execution</span>
+          </div>
+        </header>
+
+        <p>
+          If you look closely at my academic record, there is a noticeable gap between my Bachelor’s transcript and what
+          I have produced since. For years, I had no clean explanation for that discrepancy—only the quiet frustration
+          of
+          knowing I could grasp difficult ideas quickly while repeatedly stalling on the ordinary, unglamorous
+          consistency that undergraduate coursework demands.
+        </p>
+
+        <p>
+          I was diagnosed with severe ADHD late. Looking back, my Bachelor’s years were spent pushing against an
+          invisible headwind, wondering why maintaining focus, meeting routine deadlines, and keeping conventional
+          momentum felt disproportionately exhausting. Living with that friction—and watching its consequences show up
+          on
+          paper—takes a toll. Without a diagnosis, it is easy to mistake executive dysfunction for a permanent flaw in
+          character.
+        </p>
+
+        <h2>Clarity, Traction, and Getting Medicated</h2>
+
+        <p>
+          When the diagnosis finally came, there was hesitation around medication—the usual mix of stigma, pride, and
+          the
+          fear that it might flatten who I am. My experience was the exact opposite. Becoming medicated didn’t turn me
+          into someone else; it simply quieted the static enough for me to access the person I already was.
+        </p>
+
+        <p>
+          Medication does not hand you discipline, and it does not do the thinking for you. What it gives you is
+          <em>traction</em>. When ADHD is severe, raw curiosity and ability are not enough—you burn your energy fighting
+          initiation friction before your effort ever has a chance to compound. If you suspect you are dealing with
+          severe, untreated ADHD and keep hitting the same invisible wall despite caring deeply about your work, don’t
+          white-knuckle it out of stubbornness. Get evaluated, seriously consider medication with your clinician, and
+          give yourself a fair shot at reaching your actual potential.
+        </p>
+
+        <h2>Having a Fire Lit Under Me</h2>
+
+        <p>
+          The strangest part of finally gaining that clarity wasn’t relief—it was urgency. Once you feel what your
+          baseline is capable of without constant static, you realize how much further you can go. It feels like having
+          a fire lit under me.
+        </p>
+
+        <p>
+          I have no interest in treating a late diagnosis as a permanent excuse; if anything, it raised the bar I hold
+          myself to. My focus now is on redeeming myself—holding myself accountable, building real day-to-day
+          discipline, and channeling my curiosity into rigorous, deliberate work that leaves no ambiguity about what I
+          can deliver.
+        </p>
+
+        <p>
+          That also means guarding against a subtler trap: ruminating on how things could have gone had I known earlier.
+          It is tempting to replay those undergraduate years when the contrast feels sharp, but dwelling on
+          counterfactuals
+          is just mental wastage—energy stolen from the work in front of you. The only real move is the one Albert Camus
+          described in <em>The Myth of Sisyphus</em>: walk back down the hill, shoulder the boulder, and start again. As
+          long as you start again, the climb is yours—and one must imagine Sisyphus happy.
+        </p>
+
+        <hr>
+
+        <p style="font-size: var(--font-s); color: var(--text-muted);">
+          &larr; Back to <a href="../">Writing &amp; Essays</a> or <a href="../../about/">About Me</a>.
+        </p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>Dominicus Johan Nararya &copy; 2026 • Built with semantic HTML, CSS &amp; Vanilla JS</p>
+    </footer>
+  </div>
+
+  <!-- Interactive Floating HUD for CAS Fish Parameters -->
+  <button id="cas-hud-toggle" class="cas-hud-toggle-floating" title="Adjust Fish Simulation Parameters">
+    <span>🐟</span> CAS Controls
+  </button>
+
+  <div id="cas-hud" class="cas-hud collapsed">
+    <div class="cas-hud-header">
+      <span>Fish CAS Parameters</span>
+      <button id="cas-hud-close" class="cas-hud-close" aria-label="Close controls">&times;</button>
+    </div>
+    <div class="cas-hud-row">
+      <label for="cas-count-slider">Fish Count (N):</label>
+      <input type="range" id="cas-count-slider" min="15" max="150" value="65">
+      <span id="cas-count-val">65</span>
+    </div>
+    <div class="cas-hud-row">
+      <label for="cas-fear-slider">Predator Radius:</label>
+      <input type="range" id="cas-fear-slider" min="60" max="320" value="180">
+      <span id="cas-fear-val">180px</span>
+    </div>
+    <div class="cas-hud-actions">
+      <button id="cas-scatter-btn" class="cas-hud-btn">⚡ Scatter School</button>
+    </div>
+  </div>
+
+  <!-- Core Scripts -->
+  <script src="../../assets/js/ascii-fish-cas.js"></script>
+  <script src="../../assets/js/site.js"></script>
+</body>
+
+</html>
