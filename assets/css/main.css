@@ -649,6 +649,7 @@ sup.fn-ref a {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  gap: 16px;
   margin-bottom: 6px;
 }
 
@@ -661,6 +662,8 @@ sup.fn-ref a {
   font-family: var(--font-mono);
   font-size: var(--font-xs);
   color: var(--text-muted);
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .project-tags {
